@@ -2,7 +2,6 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-require 'rspec/autorun'
 require 'database_cleaner'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -40,4 +39,13 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
   config.infer_spec_type_from_file_location!
+
+  config.mock_with :rspec do |c|
+    c.syntax = [:should, :expect]
+  end
+
+  config.expect_with :rspec do |c|
+    c.syntax = [:should, :expect]
+  end
+
 end
