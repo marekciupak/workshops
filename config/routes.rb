@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   root 'categories#index'
 
   devise_for :users
+  get 'users/profile', to: 'users#show'
 end

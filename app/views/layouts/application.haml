@@ -26,8 +26,8 @@
                   = current_user.email
                   %span.caret
                 %ul.dropdown-menu{:role => "menu"}
-                  %li
-                    %a{:href => "/users/edit"} Edit account
+                  %li= link_to('Profile', users_profile_path)
+                  %li= link_to('Edit account', edit_user_registration_path)
                   %li= link_to('Logout', destroy_user_session_path, :method => :delete)
               - else
                 %li

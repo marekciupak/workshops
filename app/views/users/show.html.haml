@@ -1,0 +1,17 @@
+%h2
+  = @user.firstname + ' ' + @user.lastname
+%p
+  Access level:
+  - if @user.admin?
+    Administrator
+  - else
+    User
+%p
+  E-mail:
+  = @user.email
+%p
+  Last sign in:
+  = distance_of_time_in_words(Time.now, @user.last_sign_in_at) + ' ago '
+  = '(IP address: ' + @user.last_sign_in_ip + ')'
+%p
+  = link_to 'Edit account', edit_user_registration_path
