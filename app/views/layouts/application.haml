@@ -12,9 +12,28 @@
     %nav.navbar.navbar-default
       .container-fluid
         .navbar-header
-          %span.navbar-brand #{AppConfig.workshops_name}
-        %p.navbar-text.navbar-right
-          Links should go here
+          %button.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#navbar", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand{:href => "/"} #{AppConfig.workshops_name}
+        #navbar.navbar-collapse.collapse
+          %ul.nav.navbar-nav.navbar-right
+            %li.dropdown
+              - if user_signed_in?
+                %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                  = current_user.email
+                  %span.caret
+                %ul.dropdown-menu{:role => "menu"}
+                  %li
+                    %a{:href => "/users/edit"} Edit account
+                  %li= link_to('Logout', destroy_user_session_path, :method => :delete)
+              - else
+                %li
+                  %li= link_to('Sign in', new_user_session_path)
+                  %li= link_to('Sign up', new_user_registration_path)
+
     .container-fluid
       .row
         .col-lg-12
