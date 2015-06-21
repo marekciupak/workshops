@@ -8,15 +8,17 @@
     %th
     %th
 
-  - products.each do |product|
+  - @products.each do |product|
     %tr
       %td= link_to product.title, category_product_path(product.category, product)
       %td= product.description
       %td= product.price
-      %td= link_to 'Edit', edit_category_product_path(product.category, product)
-      %td= link_to 'Destroy', category_product_path(product.category, product), method: :delete, data: { confirm: 'Are you sure?' }
+      %td= link_to 'Edit', edit_category_product_path(product.category, product), class: "btn btn-info"
+      %td= link_to 'Destroy', category_product_path(product.category, product), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' }
 
 %br
 
 %p
-  %td= link_to 'New product', new_category_product_path(category)
+  %td= link_to 'New product', new_category_product_path(category), class: "btn btn-info"
+  |
+  %td= link_to 'Back', categories_path, class: "btn btn-primary"

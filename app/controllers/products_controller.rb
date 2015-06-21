@@ -9,6 +9,7 @@ class ProductsController < ApplicationController
   expose_decorated(:reviews, ancestor: :product)
 
   def index
+    @products = category.products
   end
 
   def show
@@ -54,7 +55,7 @@ class ProductsController < ApplicationController
 
   def check_if_user_is_product_owner
     unless current_user == product.user
-      redirect_to category_product_url(category, product), :flash => { :error => 'You are not allowed to edit this product.' }
+      redirect_to category_product_url(category, product), :flash => { :error => 'You are not allowed to edit this product.', :alert => 'You are not allowed to edit this product.' }
     end
   end
 end

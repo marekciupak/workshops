@@ -1,17 +1,15 @@
-%p#notice= notice
-
-%p
-  %b Name:
+%h2
   = category.name
 
-%p
-  - category.products.each do |product|
-    = product.title
+%br
 
-%p
-  %h3 New product
-  = render 'products/form'
+%h4
+  %p Add new product
 
-= link_to 'Edit', edit_category_path(category)
+= render 'products/form'
+
+%br
+
+= link_to 'Edit', edit_category_path(category), class: "btn btn-info"
 \|
 = link_to 'Back', categories_path, class: 'btn btn-primary'
