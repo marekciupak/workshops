@@ -1,9 +1,7 @@
-%p#notice= notice
-%p#error= flash[:error]
-
-%p
-  %b Title:
+%h2
   = product.title
+  %span.label.label-default
+    = product.category.name
 %p
   %b Description:
   = product.description
@@ -11,14 +9,16 @@
   %b Price:
   = product.price
 
-%p
-  %b Category
-  = product.category.name
+%br
 
 %h3 Reviews
-= render 'reviews/form'
+- if user_signed_in?
+  = render 'reviews/form'
 
-= render reviews
+%br
+
+%ul.list-group
+  = render reviews
 
 = link_to 'Edit', edit_category_product_path(category.id, product.id)
 \|

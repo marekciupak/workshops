@@ -1,4 +1,9 @@
-%p= review.content
-%p
-  %b= review.rating
-  %em= review.author
+%li.list-group-item
+  %p= review.content
+  %p
+    - review.rating.times do
+      %span.glyphicon.glyphicon-star
+    - (5 - review.rating).times do
+      %span.glyphicon.glyphicon-star-empty
+    |
+    %em= review.author

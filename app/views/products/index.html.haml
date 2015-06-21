@@ -1,21 +1,22 @@
 %h1 Listing products
 
-%table
+%table.table
   %tr
     %th Title
     %th Description
     %th Price
     %th
     %th
-    %th
 
   - products.each do |product|
     %tr
-      %td= product.title
+      %td= link_to product.title, category_product_path(product.category, product)
       %td= product.description
       %td= product.price
-      %td= link_to 'Show', category_product_path(product.category, product)
       %td= link_to 'Edit', edit_category_product_path(product.category, product)
       %td= link_to 'Destroy', category_product_path(product.category, product), method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
+
+%p
+  %td= link_to 'New product', new_category_product_path(category)
