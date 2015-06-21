@@ -15,3 +15,18 @@
   = '(IP address: ' + @user.last_sign_in_ip + ')'
 %p
   = link_to 'Edit account', edit_user_registration_path
+
+%h3 My last reviews
+- @reviews.each do |review|
+  %p
+    Product:
+    = review.product.title
+  %p
+    Created at:
+    = review.created_at.to_date.strftime('%d-%m-%Y')
+  %p
+    Content:
+    = review.content
+  %p
+    Rating:
+    = review.rating

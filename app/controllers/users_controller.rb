@@ -4,5 +4,6 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    @reviews = @user.reviews.order(:created_at).limit(5)
   end
 end
