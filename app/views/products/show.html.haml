@@ -15,16 +15,16 @@
 %ul.list-group
   = render reviews
 
-%h3 Add new review
-
 - if user_signed_in?
+  %h3 Add new review
   = render 'reviews/form'
 
 %br
 %br
 
-= link_to 'Edit', edit_category_product_path(category.id, product.id), class: "btn btn-primary"
-\|
+- if user_signed_in?
+  = link_to 'Edit', edit_category_product_path(category.id, product.id), class: "btn btn-primary"
+  \|
 = link_to 'Back', category_products_path, class: 'btn btn-primary'
 
 %br
